@@ -21,6 +21,16 @@ float division(int x, int y){
     return ((float) x /(float) y);
 }
 
+int factorial(int x){
+    int output=1;
+    while(x>0){
+        output=output*x;
+        x--;
+    }
+    return output;
+    
+}
+
 void assignInputs(){
     std::cout << "Input your first number:";
     std::cin >> x;
@@ -37,7 +47,7 @@ int main(){
 
     while (state!=0)
     {
-        std::cout << "[1] Addition\n[2] Subtraction\n[3] Multiplication\n[4] Division\n[5] Quit" <<std::endl;
+        std::cout << "[1] Addition\n[2] Subtraction\n[3] Multiplication\n[4] Division\n[5] Factorial\n[6] Quit" <<std::endl;
         std::cin >> userSelection;
         switch(userSelection){
             case 1:
@@ -61,7 +71,15 @@ int main(){
                 std::cout << x << " / " << y << " = " << division(x,y) << std::endl;
             break;
 
-            case 5: 
+            case 5:
+                std::cout << "please input a number:";
+                std::cin >> x;
+                std::cout << x << "! = " << factorial(x) << std::endl;
+
+                break;
+                
+
+            case 6: 
             std::cout << "Goodbye";
             state=0;
             break;
