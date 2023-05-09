@@ -31,6 +31,24 @@ int factorial(int x){
     
 }
 
+float power(int base,int exponent){
+    float answer=base;
+    if(exponent>0){
+        for(int i=1;i<exponent;i++){
+            answer=answer*base;
+        }
+    }
+    else if(exponent<0){
+        for(int i=0;i<-exponent;i++){
+            answer=answer/base;
+        }
+    }
+    else{
+        answer=1; // all numbers to the power of 0 are euqal to 1
+    }
+    return answer;
+}
+
 void assignInputs(){
     std::cout << "Input your first number:";
     std::cin >> x;
@@ -47,7 +65,7 @@ int main(){
 
     while (state!=0)
     {
-        std::cout << "[1] Addition\n[2] Subtraction\n[3] Multiplication\n[4] Division\n[5] Factorial\n[6] Quit" <<std::endl;
+        std::cout << "[1] Addition\n[2] Subtraction\n[3] Multiplication\n[4] Division\n[5] Factorial\n[6] Exponentiation\n[7] Quit\n" <<std::endl;
         std::cin >> userSelection;
         switch(userSelection){
             case 1:
@@ -72,14 +90,24 @@ int main(){
             break;
 
             case 5:
-                std::cout << "please input a number:";
+                std::cout << "please input a natural number:";
                 std::cin >> x;
+                if(x<0){
+                    std::cout << "Factorial only functions on natural numbers\n";
+                    x=0;
+                    break;
+                }
                 std::cout << x << "! = " << factorial(x) << std::endl;
 
                 break;
+            
+            case 6:
+                assignInputs();
+                std::cout << x << " raised to the power " << y <<" = " << power(x,y) <<std::endl;
+                break;
                 
 
-            case 6: 
+            case 7: 
             std::cout << "Goodbye";
             state=0;
             break;
